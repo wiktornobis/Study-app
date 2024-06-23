@@ -1,0 +1,61 @@
+// Zmienne
+@color-white: #ffffff;
+@color-primary: #00529a;
+@color-green-light: #006e8c;
+@color-column: #e8e8e8;
+@color-text: #4c4c4c;
+@color-text-dark: #2a2a2a;
+@color-list: #6c6c6c;
+
+@size-base-font: 16px;
+
+@mobile: 767px;
+@tablet: 989px;
+@desktop: 1489px;
+@full-hd: 1920px;
+
+@font-family: 'IBM-Plex-Sans', sans-serif;
+
+@spacing-sm: 23px;
+@spacing-md: 46px;
+@spacing-lg: 69px;
+@spacing-xl: 92px;
+@spacing-xxl: 150px;
+
+
+// Mixin dla media query
+.media-query(@size, @rules) {
+  @media only screen and (max-width: @size) {
+    @rules();
+  }
+}
+
+// Styl dla .base-width
+.base-width {
+  max-width: @full-hd;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .media-query(@full-hd, {
+    margin-left: @spacing-xxl;
+    margin-right: @spacing-xxl;
+    margin-bottom: 60px;
+  });
+
+  .media-query(@desktop, {
+    margin-left: @spacing-xxl;
+    margin-right: @spacing-xxl;
+  });
+
+  .media-query(1100px, {
+    margin-left: @spacing-lg;
+    margin-right: @spacing-lg;
+  });
+
+  .media-query(@mobile, {
+    margin-left: @spacing-sm;
+    margin-right: @spacing-sm;
+    margin-bottom: @spacing-md;
+  });
+}

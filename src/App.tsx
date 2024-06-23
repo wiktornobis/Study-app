@@ -1,10 +1,11 @@
 import {ReactElement, useState} from "react";
-import PostList1 from "./PostList1.tsx";
+import PostList1 from "@/PostList1.tsx";
+import "@/less/main.less";
 const App = () => {
     const [currentPage, setCurrentPage] = useState<ReactElement>(<PostList1 />)
 
     return (
-        <div>
+        <div className="general-container">
             <button onClick={() => setCurrentPage(<PostList1 />)}>
                 Post List 1
             </button>
