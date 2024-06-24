@@ -8,4 +8,10 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src")}]
   },
+  server: {
+    port: 8090,
+    strictPort: true,
+    host: true,
+    origin: "http://0.0.0.0:8090"
+  }
 })
