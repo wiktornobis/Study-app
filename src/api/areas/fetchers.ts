@@ -1,4 +1,4 @@
-import {BASE_URL} from "../../constants/variables";
+import {BASE_URL} from "@/ts/constants/variables";
 import {BasicResponse} from "../common/types";
 import {Areas} from "./types";
 
