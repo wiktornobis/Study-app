@@ -1,4 +1,3 @@
-// ToggleColorMode.tsx
 import React, { createContext, useState, useMemo, useEffect, ReactNode } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -17,7 +16,10 @@ interface ToggleColorModeProps {
 }
 
 const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
-    const [mode, setMode] = useState<'light' | 'dark'>('light');
+    const [mode, setMode] = useState<'light' | 'dark'>(() => {
+        const savedMode = localStorage.getItem('color-mode');
+        return savedMode === 'dark' ? 'dark' : 'light';
+    });
 
     const colorMode = useMemo(
         () => ({
@@ -40,6 +42,8 @@ const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
     );
 
     useEffect(() => {
+        localStorage.setItem('color-mode', mode);
+
         document.body.classList.remove('light', 'dark');
         document.body.classList.add(mode);
     }, [mode]);
