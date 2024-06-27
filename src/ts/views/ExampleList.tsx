@@ -1,11 +1,13 @@
 
-import { useAREAS } from "./api/areas/queries.ts";
-import { Areas } from "./api/areas/types";
+import { useAREAS } from "@/api/areas/queries.ts";
+import { Areas } from "@/api/areas/types";
+import {CircularProgress} from "@mui/material";
 
-const PostList1 = () => {
+const ExampleList = () => {
     const areasQuery = useAREAS();
 
-    if (areasQuery.status === "loading") return <h1>Loading...</h1>;
+    // eslint-disable-next-line react/jsx-no-undef
+    if (areasQuery.status === "loading") return <div><CircularProgress color={"secondary"} /></div>;
     if (areasQuery.status === "error") return <h1>Error: {areasQuery.error.message}</h1>;
 
     return (
@@ -20,4 +22,4 @@ const PostList1 = () => {
     );
 };
 
-export default PostList1;
+export default ExampleList;
