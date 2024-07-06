@@ -12,9 +12,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-
 import {ColorModeContext} from '@/ts/theme/ToggleColorMode';
+import logo from '@/assets/logo.png';
 
 const pages = [
     { id: 1, name: 'Newsy', path: '/newsy' },
@@ -27,15 +26,15 @@ function Nav() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const navigate = useNavigate();
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>):void => {
+    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>): void => {
         setAnchorElNav(event.currentTarget);
     };
 
-    const handleCloseNavMenu = ():void => {
+    const handleCloseNavMenu = (): void => {
         setAnchorElNav(null);
     };
 
-    const handleNavigation = (path: string):void => {
+    const handleNavigation = (path: string): void => {
         navigate(path);
         handleCloseNavMenu();
     };
@@ -44,14 +43,17 @@ function Nav() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <img
-                        src="/logo.png"
+                    <Box
+                        component="img"
+                        src={logo}
                         alt="logo"
-                        width="150"
-                        height="150"
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                            width: 150,
+                            height: 150
+                        }}
                         loading="lazy"
                     />
-
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -88,25 +90,18 @@ function Nav() {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                    <Typography
-                        variant="h5"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+
+                    <Box
+                        component="img"
+                        src={logo}
+                        alt="logo"
                         sx={{
-                            mr: 2,
-                            display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
+                            display: { xs: 'block', md: 'none' },
+                            width: 150,
+                            height: 150
                         }}
-                    >
-                        LOGO
-                    </Typography>
+                        loading="lazy"
+                    />
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
@@ -126,7 +121,6 @@ function Nav() {
                     >
                         {colorMode.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
                     </IconButton>
-
                 </Toolbar>
             </Container>
         </AppBar>

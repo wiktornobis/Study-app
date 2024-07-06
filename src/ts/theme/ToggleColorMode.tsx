@@ -1,6 +1,8 @@
 import React, { createContext, useState, useMemo, useEffect, ReactNode } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import '@/less/params.less'
 
+type ColorMode = 'light' | 'dark';
 interface ColorModeContextType {
     toggleColorMode: () => void;
     mode: 'light' | 'dark';
@@ -16,7 +18,7 @@ interface ToggleColorModeProps {
 }
 
 const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
-    const [mode, setMode] = useState<'light' | 'dark'>(() => {
+    const [mode, setMode] = useState<ColorMode>(() => {
         const savedMode = localStorage.getItem('color-mode');
         return savedMode === 'dark' ? 'dark' : 'light';
     });
@@ -36,6 +38,22 @@ const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
             createTheme({
                 palette: {
                     mode,
+                    primary: {
+                        main: mode === 'light' ? "#E2CFEA" : "#483C48",
+                        contrastText: mode === 'light' ? "#102B3F" : "#FFFFFF",
+                    },
+                    secondary: {
+                        main: mode === 'light' ? "#A06CD5" : "#7A4A99",
+                        contrastText: mode === 'light' ? "#102B3F" : "#FFFFFF",
+                    },
+                    background: {
+                        default: mode === 'light' ? '#e8e8e8' : '#031313',
+                        paper: mode === 'light' ? '#FFFFFF' : '#483C48',
+                    },
+                    text: {
+                        primary: mode === 'light' ? '#102B3F' : '#E8E8E8',
+                        secondary: mode === 'light' ? '#6247AA' : '#D0D0D0',
+                    },
                 },
             }),
         [mode]
