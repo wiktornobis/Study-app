@@ -36,6 +36,9 @@ const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
     const theme = useMemo(
         () =>
             createTheme({
+                typography: {
+                    fontFamily: 'Lato, Helvetica Neue, Arial, sans-serif',
+                },
                 palette: {
                     mode,
                     primary: {

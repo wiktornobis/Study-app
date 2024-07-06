@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import {ColorModeContext} from '@/ts/theme/ToggleColorMode';
 import logo from '@/assets/logo.png';
+import logoWhite from '@/assets/logo-white.png';
 
 const pages = [
     { id: 1, name: 'Newsy', path: '/newsy' },
@@ -45,7 +46,7 @@ function Nav() {
                 <Toolbar disableGutters>
                     <Box
                         component="img"
-                        src={logo}
+                        src={colorMode.mode === 'light' ? logo : logoWhite}
                         alt="logo"
                         sx={{
                             display: { xs: 'none', md: 'block' },
@@ -93,12 +94,12 @@ function Nav() {
 
                     <Box
                         component="img"
-                        src={logo}
+                        src={colorMode.mode === 'light' ? logo : logoWhite}
                         alt="logo"
                         sx={{
                             display: { xs: 'block', md: 'none' },
-                            width: 150,
-                            height: 150
+                            width: 110,
+                            height: 110
                         }}
                         loading="lazy"
                     />
