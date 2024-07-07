@@ -1,6 +1,4 @@
 import Head from "@/ts/helpers/Head.tsx";
-import Nav from "@/ts/components/Nav.tsx";
-
 
 const Home = () => {
     return (
@@ -11,7 +9,6 @@ const Home = () => {
                 keywords="Uczelnie wyższe, wynik z matury, punktacja matura"
                 robots="index, follow"
             />
-            <Nav />
         </>
     );
 };

@@ -1,12 +1,10 @@
-import Nav from "@/ts/components/Nav.tsx";
-
 
 const NotFound = () => {
     return (
         <>
-        <Nav />
-
-        <div>Not Found</div>
+            <section className="general-container">
+                Not Found
+            </section>
         </>
     );
 };
