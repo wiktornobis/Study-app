@@ -1,11 +1,15 @@
-import React, { createContext, useState, useMemo, useEffect, ReactNode } from 'react';
+import React, { createContext, ReactNode, useMemo, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import '@/less/params.less'
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '@/redux/store';
+import { toggleColorMode } from '@/redux/reducers/colorMode/colorModeSlice';
+import '@/less/params.less';
 
 type ColorMode = 'light' | 'dark';
+
 interface ColorModeContextType {
     toggleColorMode: () => void;
-    mode: 'light' | 'dark';
+    mode: ColorMode;
 }
 
 export const ColorModeContext = createContext<ColorModeContextType>({
@@ -18,20 +22,8 @@ interface ToggleColorModeProps {
 }
 
 const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
-    const [mode, setMode] = useState<ColorMode>(() => {
-        const savedMode = localStorage.getItem('color-mode');
-        return savedMode === 'dark' ? 'dark' : 'light';
-    });
-
-    const colorMode = useMemo(
-        () => ({
-            toggleColorMode: () => {
-                setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-            },
-            mode,
-        }),
-        [mode]
-    );
+    const dispatch: AppDispatch = useDispatch();
+    const mode = useSelector((state: RootState) => state.colorMode.mode);
 
     const theme = useMemo(
         () =>
@@ -63,14 +55,20 @@ const ToggleColorMode: React.FC<ToggleColorModeProps> = ({ children }) => {
     );
 
     useEffect(() => {
-        localStorage.setItem('color-mode', mode);
-
         document.body.classList.remove('light', 'dark');
         document.body.classList.add(mode);
     }, [mode]);
 
+    const colorModeContextValue = useMemo(
+        () => ({
+            toggleColorMode: () => dispatch(toggleColorMode()),
+            mode,
+        }),
+        [dispatch, mode]
+    );
+
     return (
-        <ColorModeContext.Provider value={colorMode}>
+        <ColorModeContext.Provider value={colorModeContextValue}>
             <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </ColorModeContext.Provider>
     );

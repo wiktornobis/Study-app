@@ -15,6 +15,7 @@
     "@heroicons/react": "^2.1.4",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@reduxjs/toolkit": "^2.2.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
