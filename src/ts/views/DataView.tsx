@@ -2,12 +2,12 @@ import '@/less/headerInfiniteAnimation.less';
 
 import Head from "@/ts/helpers/Head.tsx";
 import HeaderInfiniteAnimation from "@/ts/components/HeaderInfiniteAnimation.tsx";
-import ExampleChart from "@/ts/charts/ExampleChart.tsx";
+import CircleChart from "@/ts/charts/CircleChart.tsx";
 
 
 const DataView = () => {
-    let textFirst:string = "Hi there,";
-    let textSecond: string = "Study App";
+    let textFirst:string = "Statystki";
+    let textSecond: string = "na Żywo";
 
     return (
         <>
@@ -19,7 +19,7 @@ const DataView = () => {
             />
             <section className="general-container">
                 <HeaderInfiniteAnimation textFirst={textFirst} textSecond={textSecond} />
-                <ExampleChart />
+                <CircleChart />
             </section>
         </>
     );

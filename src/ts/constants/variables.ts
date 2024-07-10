@@ -1,1 +1,1 @@
-export const BASE_URL = "https://api-dbw.stat.gov.pl/api/1.1.0/area/area-area";
+export const BASE_URL = "http://localhost:8090/src/api/exampleData/";
