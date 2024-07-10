@@ -2,6 +2,7 @@ import '@/less/headerInfiniteAnimation.less';
 
 import Head from "@/ts/helpers/Head.tsx";
 import HeaderInfiniteAnimation from "@/ts/components/HeaderInfiniteAnimation.tsx";
+import ExampleChart from "@/ts/charts/ExampleChart.tsx";
 
 
 const DataView = () => {
@@ -18,6 +19,7 @@ const DataView = () => {
             />
             <section className="general-container">
                 <HeaderInfiniteAnimation textFirst={textFirst} textSecond={textSecond} />
+                <ExampleChart />
             </section>
         </>
     );

@@ -9,6 +9,9 @@ const Home = () => {
                 keywords="Uczelnie wyższe, wynik z matury, punktacja matura"
                 robots="index, follow"
             />
+            <section className="general-container">
+                Test
+            </section>
         </>
     );
 };

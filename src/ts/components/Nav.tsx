@@ -54,6 +54,7 @@ function Nav() {
                             height: 150
                         }}
                         loading="lazy"
+                        onClick={() => handleNavigation("/")}
                     />
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -102,6 +103,7 @@ function Nav() {
                             height: 110
                         }}
                         loading="lazy"
+                        onClick={() => handleNavigation("/")}
                     />
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
