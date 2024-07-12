@@ -1,10 +1,11 @@
 import React, {useCallback, useEffect, useState} from "react";
 import {Pie, PieChart, Sector} from "recharts";
-import {useMostPopularDirection} from "@/api/areas/queries.ts";
+import {useMostPopularDirection} from "@/api/mostPopularDirections/queries.ts";
 import {CircularProgress} from "@mui/material";
 import TitleChart from "@/ts/components/TitleChart.tsx";
 
 import '@/less/charts.less';
+import {MostPopularDirections} from "@/api/mostPopularDirections/types.ts";
 
 const renderActiveShape = (props: any) => {
     const RADIAN = Math.PI / 180;
@@ -80,7 +81,7 @@ const renderActiveShape = (props: any) => {
 };
 
 const CircleChart = () => {
-    const areasQuery = useMostPopularDirection();
+    const mostPopularDirections = useMostPopularDirection();
     const [chartData, setChartData] = useState([]);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -89,20 +90,23 @@ const CircleChart = () => {
     }, [setActiveIndex]);
 
     useEffect(() => {
-        if (areasQuery.status === "success") {
-            setChartData(areasQuery.data.map((area) => ({ name: area.name, value: area.number_of_students })));
+        if (mostPopularDirections.status === "success") {
+            setChartData(mostPopularDirections.data.map((area: MostPopularDirections[]) => ({
+                name: area.name,
+                value: area.number_of_students
+            })));
         }
-    }, [areasQuery.data]);
+    }, [mostPopularDirections.data]);
 
-    if (areasQuery.status === "loading") return <div><CircularProgress color={"secondary"} /></div>;
-    if (areasQuery.status === "error") return <h1>Error: {areasQuery.error.message}</h1>;
+    if (mostPopularDirections.status === "loading") return <div><CircularProgress color={"secondary"} /></div>;
+    if (mostPopularDirections.status === "error") return <h1>Error: {mostPopularDirections.error.message}</h1>;
 
     let title:string = 'Top 10 Kierunków';
 
     return (
         <>
         <TitleChart title={title} />
-        <PieChart width={480} height={520} className="circle_chart">
+        <PieChart width={480} height={520} className="universal_chart">
             <Pie
                 activeIndex={activeIndex}
                 activeShape={renderActiveShape}

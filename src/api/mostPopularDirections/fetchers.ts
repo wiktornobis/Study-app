@@ -1,8 +1,8 @@
 import {BASE_URL} from "@/ts/constants/variables";
 import {BasicResponse} from "../common/types";
-import {Areas} from "./types";
+import {MostPopularDirections} from "./types";
 
-export const fetchMostPopularDirection = async (): Promise<BasicResponse<Areas[]>> => {
+export const fetchMostPopularDirection = async (): Promise<BasicResponse<MostPopularDirections[]>> => {
     const response = await fetch(`${BASE_URL}/mostPopularDirection.json`);
 
     if (response.ok) {
