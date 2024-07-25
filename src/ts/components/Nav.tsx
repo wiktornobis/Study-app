@@ -50,8 +50,8 @@ function Nav() {
                         alt="logo"
                         sx={{
                             display: { xs: 'none', md: 'block' },
-                            width: 150,
-                            height: 150
+                            width: 70,
+                            height: 70
                         }}
                         loading="lazy"
                         onClick={() => handleNavigation("/")}
@@ -99,8 +99,8 @@ function Nav() {
                         alt="logo"
                         sx={{
                             display: { xs: 'block', md: 'none' },
-                            width: 110,
-                            height: 110
+                            width: 70,
+                            height: 70
                         }}
                         loading="lazy"
                         onClick={() => handleNavigation("/")}
@@ -110,7 +110,7 @@ function Nav() {
                             <Button
                                 key={page.id}
                                 onClick={() => handleNavigation(page.path)}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 1, color: 'white', display: 'block' }}
                             >
                                 {page.name}
                             </Button>
