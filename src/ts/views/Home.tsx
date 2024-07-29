@@ -14,8 +14,9 @@ const Home = () => {
                 keywords="Uczelnie wyższe, wynik z matury, punktacja matura"
                 robots="index, follow"
             />
+
+            <HeroLogo />
             <section className="general-container">
-              <HeroLogo />
             </section>
         </>
     );
